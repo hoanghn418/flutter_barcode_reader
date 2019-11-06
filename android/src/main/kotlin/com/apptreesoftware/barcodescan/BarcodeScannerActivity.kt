@@ -160,7 +160,43 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
                 window.statusBarColor = 0xFF2A1052.toInt()
             }
-        }        
+        } else if (theme != null && theme.equals("blaise")) {
+            actionBarColor = 0xFFF7941F.toInt()
+            scannerView.setBorderColor(0xFFF7941F.toInt())
+            actionBar.setBackgroundDrawable(ColorDrawable(0xFFFFFFFF.toInt()))
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                scannerView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            }
+            if (android.os.Build.VERSION.SDK_INT >= 21) {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.statusBarColor = 0xFFFFFFFF.toInt()
+            }
+        } else if (theme != null && theme.equals("blaisedark")) {
+            actionBarColor = 0xFF8287B5.toInt()
+            scannerView.setBorderColor(0xFF8287B5.toInt())
+            actionBar.setBackgroundDrawable(ColorDrawable(0xFF1C1E21.toInt()))
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                scannerView.setSystemUiVisibility(0);
+            }
+            if (android.os.Build.VERSION.SDK_INT >= 21) {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.statusBarColor = 0xFF1C1E21.toInt()
+            }
+        } else if (theme != null && theme.equals("copper")) {
+            actionBarColor = 0xFFDD8D52.toInt()
+            scannerView.setBorderColor(0xFFDD8D52.toInt())
+            actionBar.setBackgroundDrawable(ColorDrawable(0xFF2B2C37.toInt()))
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                scannerView.setSystemUiVisibility(0);
+            }
+            if (android.os.Build.VERSION.SDK_INT >= 21) {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.statusBarColor = 0xFF2B2C37.toInt()
+            }
+        }
         setContentView(scannerView)
     }
 

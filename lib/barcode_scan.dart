@@ -12,7 +12,10 @@ enum OverlayTheme {
   RADIUM,
   INDIUM,
   NEPTUNIUM,
-  THORIUM
+  THORIUM,
+  BLAISE,
+  BLAISEDARK,
+  COPPER
 }
 
 class BarcodeScanner {
@@ -22,26 +25,46 @@ class BarcodeScanner {
   static Future<String> scan(OverlayTheme theme) async {
     assert(theme != null);
     String themeStr;
-    if (theme == OverlayTheme.KALIUM) {
-      themeStr = "kalium";
-    } else if (theme == OverlayTheme.NATRIUM) {
-      themeStr = "natrium";
-    } else if (theme == OverlayTheme.IRIDIUM) {
-      themeStr = "iridium";
-    } else if (theme == OverlayTheme.TITANIUM) {
-      themeStr = "titanium";
-    } else if (theme == OverlayTheme.BERYLLIUM) {
-      themeStr = "beryllium";
-    } else if (theme == OverlayTheme.RUTHIUM) {
-      themeStr = "ruthium";
-    } else if (theme == OverlayTheme.RADIUM) {
-      themeStr = "radium";
-    } else if (theme == OverlayTheme.INDIUM) {
-      themeStr = "indium";
-    } else if (theme == OverlayTheme.NEPTUNIUM) {
-      themeStr = "neptunium";
-    } else if (theme == OverlayTheme.THORIUM) {
-      themeStr = "thorium";
+    switch (theme) {
+      case OverlayTheme.KALIUM:
+        themeStr = "kalium";
+        break;
+      case OverlayTheme.NATRIUM:
+        themeStr = "natrium";
+        break;
+      case OverlayTheme.IRIDIUM:
+        themeStr = "iridium";
+        break;
+      case OverlayTheme.TITANIUM:
+        themeStr = "titanium";
+        break;
+      case OverlayTheme.BERYLLIUM:
+        themeStr = "beryllium";
+        break;
+      case OverlayTheme.RUTHIUM:
+        themeStr = "ruthium";
+        break;
+      case OverlayTheme.RADIUM:
+        themeStr = "radium";
+        break;
+      case OverlayTheme.INDIUM:
+        themeStr = "indium";
+        break;
+      case OverlayTheme.NEPTUNIUM:
+        themeStr = "neptunium";
+        break;
+      case OverlayTheme.THORIUM:
+        themeStr = "thorium";
+        break;
+      case OverlayTheme.BLAISE:
+        themeStr = "blaise";
+        break;
+      case OverlayTheme.BLAISEDARK:
+        themeStr = "blaisedark";
+        break;
+      case OverlayTheme.COPPER:
+        themeStr = "copper";
+        break;
     }
     final Map<String, dynamic> params = <String, dynamic>{
      'theme': themeStr,
