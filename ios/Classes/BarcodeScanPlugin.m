@@ -29,10 +29,10 @@
 
 - (void)showBarcodeView:(NSString *)theme {
     BarcodeScannerViewController *scannerViewController = [[BarcodeScannerViewController alloc] initWithTheme:theme];
-    if (@available(iOS 13.0, *)) {
-        [scannerViewController setModalPresentationStyle:UIModalPresentationFullScreen];
-    }
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:scannerViewController];
+    if (@available(iOS 13.0, *)) {        
+        [navigationController setModalPresentationStyle:UIModalPresentationFullScreen];
+    }
     scannerViewController.delegate = self;
     [self.hostViewController presentViewController:navigationController animated:NO completion:nil];
 }
