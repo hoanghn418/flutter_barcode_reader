@@ -21,27 +21,13 @@ import android.view.WindowManager
 
 class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
 
-    private var scannerView: ZXingScannerView? = null
+    lateinit var scannerView: me.dm7.barcodescanner.zxing.ZXingScannerView
 
     var actionBarColor = Color.WHITE
 
     companion object {
         const val REQUEST_TAKE_PHOTO_CAMERA_PERMISSION = 100
         const val TOGGLE_FLASH = 200
-
-        private val formatMap: Map<Protos.BarcodeFormat, BarcodeFormat> = mapOf(
-                Protos.BarcodeFormat.aztec to BarcodeFormat.AZTEC,
-                Protos.BarcodeFormat.code39 to BarcodeFormat.CODE_39,
-                Protos.BarcodeFormat.code93 to BarcodeFormat.CODE_93,
-                Protos.BarcodeFormat.code128 to BarcodeFormat.CODE_128,
-                Protos.BarcodeFormat.dataMatrix to BarcodeFormat.DATA_MATRIX,
-                Protos.BarcodeFormat.ean8 to BarcodeFormat.EAN_8,
-                Protos.BarcodeFormat.ean13 to BarcodeFormat.EAN_13,
-                Protos.BarcodeFormat.interleaved2of5 to BarcodeFormat.ITF,
-                Protos.BarcodeFormat.pdf417 to BarcodeFormat.PDF_417,
-                Protos.BarcodeFormat.qr to BarcodeFormat.QR_CODE,
-                Protos.BarcodeFormat.upce to BarcodeFormat.UPC_E
-        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,22 +35,11 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
         title = ""
         val p = intent.extras
         val theme = p!!.getString("theme");
-        scannerView = ZXingAutofocusScannerView(this).apply {
-            setAutoFocus(config.android.useAutoFocus)
-            setLaserEnabled(false)
-            setSquareViewFinder(true)
-            val restrictedFormats = mapRestrictedBarcodeTypes()
-            if (restrictedFormats.isNotEmpty()) {
-                setFormats(restrictedFormats)
-            }
-
-            // this parameter will make your HUAWEI phone works great!
-            setAspectTolerance(config.android.aspectTolerance.toFloat())
-            if (config.autoEnableFlash) {
-                flash = config.autoEnableFlash
-                invalidateOptionsMenu()
-            }
-        }
+        scannerView = ZXingAutofocusScannerView(this)
+        scannerView.setAutoFocus(true)
+        scannerView.setLaserEnabled(false)
+        scannerView.setSquareViewFinder(true)
+        scannerView.setAspectTolerance(config.android.aspectTolerance.toFloat())
         if (theme != null && theme.equals("kalium")) {
             actionBarColor = 0xFFFBDD11.toInt()
             scannerView.setBorderColor(0xFFFBDD11.toInt())
@@ -307,21 +282,6 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
             }
         }
     }
-
-    private fun mapRestrictedBarcodeTypes(): List<BarcodeFormat> {
-        val types: MutableList<BarcodeFormat> = mutableListOf()
-
-        this.config.restrictFormatList.filterNotNull().forEach {
-            if (!formatMap.containsKey(it)) {
-                print("Unrecognized")
-                return@forEach
-            }
-
-            types.add(formatMap.getValue(it))
-        }
-
-        return types
-    }    
 }
 
 object PermissionUtil {
