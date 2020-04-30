@@ -39,7 +39,7 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
         scannerView.setAutoFocus(true)
         scannerView.setLaserEnabled(false)
         scannerView.setSquareViewFinder(true)
-        scannerView.setAspectTolerance(config.android.aspectTolerance.toFloat())
+        scannerView.setAspectTolerance(0.5)
         if (theme != null && theme.equals("kalium")) {
             actionBarColor = 0xFFFBDD11.toInt()
             scannerView.setBorderColor(0xFFFBDD11.toInt())
