@@ -58,7 +58,7 @@ class BarcodeScanner {
         themeStr = "thorium";
         break;
       case OverlayTheme.OBSIDIUM:
-        themeStr = "thorium";
+        themeStr = "obsidium";
         break;
       case OverlayTheme.BLAISE:
         themeStr = "blaise";
