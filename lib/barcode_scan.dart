@@ -13,7 +13,7 @@ enum OverlayTheme {
   INDIUM,
   NEPTUNIUM,
   THORIUM,
-  OBSIDIUM,
+  CARBON,
   BLAISE,
   BLAISEDARK,
   COPPER
@@ -57,8 +57,8 @@ class BarcodeScanner {
       case OverlayTheme.THORIUM:
         themeStr = "thorium";
         break;
-      case OverlayTheme.OBSIDIUM:
-        themeStr = "obsidium";
+      case OverlayTheme.CARBON:
+        themeStr = "carbon";
         break;
       case OverlayTheme.BLAISE:
         themeStr = "blaise";
