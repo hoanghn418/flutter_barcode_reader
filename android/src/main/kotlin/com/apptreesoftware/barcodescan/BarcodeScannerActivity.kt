@@ -170,7 +170,7 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
             if (android.os.Build.VERSION.SDK_INT >= 21) {
                 window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-                window.statusBarColor = 0xFF1C1C1E.toInt()
+                window.statusBarColor = 0xFF000000.toInt()
             }
         } else if (theme != null && theme.equals("blaise")) {
             actionBarColor = 0xFFF7941F.toInt()
