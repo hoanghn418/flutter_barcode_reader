@@ -14,6 +14,7 @@ enum OverlayTheme {
   NEPTUNIUM,
   THORIUM,
   CARBON,
+  URANIUM,
   BLAISE,
   BLAISEDARK,
   COPPER
@@ -60,6 +61,9 @@ class BarcodeScanner {
       case OverlayTheme.CARBON:
         themeStr = "carbon";
         break;
+      case OverlayTheme.URANIUM:
+        themeStr = "uranium";
+        break;
       case OverlayTheme.BLAISE:
         themeStr = "blaise";
         break;
@@ -71,7 +75,7 @@ class BarcodeScanner {
         break;
     }
     final Map<String, dynamic> params = <String, dynamic>{
-     'theme': themeStr,
+      'theme': themeStr,
     };
     return await _channel.invokeMethod('scan', params);
   }

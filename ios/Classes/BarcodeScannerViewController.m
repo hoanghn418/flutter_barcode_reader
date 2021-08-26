@@ -60,6 +60,9 @@
     } else if ([@"carbon" isEqualToString:self.theme]) {
         barBgColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
         primaryColor = [UIColor colorWithRed:0.60 green:0.75 blue:0.94 alpha:1.0];
+    } else if ([@"uranium" isEqualToString:self.theme]) {
+        barBgColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
+        primaryColor = [UIColor colorWithRed:0.24 green:0.17 blue:0.35 alpha:1.0];
     } else if ([@"blaise" isEqualToString:self.theme]) {
         barBgColor = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:1.0];
         primaryColor = [UIColor colorWithRed:0.97 green:0.58 blue:0.12 alpha:1.0];
