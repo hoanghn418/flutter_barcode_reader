@@ -48,18 +48,27 @@ protobuf {
     // Configure the protoc executable
     protoc {
         // Download from repositories
-        artifact = 'com.google.protobuf:protoc:3.11.4'
+        // For apple m1, add protoc_platform=osx-x86_64 in $HOME/.gradle/gradle.properties
+        if (project.hasProperty('protoc_platform')) {
+            artifact = "com.google.protobuf:protoc:3.11.4:${protoc_platform}"
+        } else {
+            artifact = "com.google.protobuf:protoc:3.11.4"
+        }
     }
     plugins {
         javalite {
             // The codegen for lite comes as a separate artifact
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+            if (project.hasProperty('protoc_platform')) {
+                artifact = "com.google.protobuf:protoc-gen-javalite:3.0.0:${protoc_platform}"
+            } else {
+                artifact = "com.google.protobuf:protoc-gen-javalite:3.0.0"
+            }
         }
     }
     generateProtoTasks {
         all().each { task ->
             task.plugins {
-                javalite { }
+                javalite {}
             }
         }
     }
